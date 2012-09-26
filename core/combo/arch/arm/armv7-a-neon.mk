@@ -17,9 +17,11 @@ ARCH_ARM_HAVE_NEON              := true
 # and a better solution should be found in the future.
 #
 arch_variant_cflags := \
+    -O2 \
     -march=armv7-a \
     -mfloat-abi=softfp \
-    -mfpu=neon
+    -mfpu=neon \
+
 
 arch_variant_ldflags := \
 	-Wl,--fix-cortex-a8
