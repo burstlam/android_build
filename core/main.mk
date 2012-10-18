@@ -266,7 +266,7 @@ ifneq (,$(user_variant))
 
 else # !user_variant
   # Turn on checkjni for non-user builds.
-  ADDITIONAL_BUILD_PROPERTIES += ro.kernel.android.checkjni=1
+  ADDITIONAL_BUILD_PROPERTIES += ro.kernel.android.checkjni=0
   # Set device insecure for non-user builds.
   ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
   # Allow mock locations by default for non user builds
@@ -330,7 +330,7 @@ ifneq ($(filter dalvik.gc.type-precise,$(PRODUCT_TAGS)),)
   # additional storage requirements for ".odex" files can cause /system
   # to overflow on some devices, so this is configured separately for
   # each product.
-  ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.dexopt-flags=m=y
+  ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.dexopt-flags=m=y,o=v,u=y
 endif
 
 ADDITIONAL_BUILD_PROPERTIES += net.bt.name=Android
