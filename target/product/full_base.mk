@@ -24,7 +24,6 @@ PRODUCT_PACKAGES := \
     libdrmframework \
     libdrmframework_jni \
     libfwdlockengine \
-    VideoEditor \
     WAPPushManager
 
 PRODUCT_PACKAGES += \
@@ -37,12 +36,13 @@ PRODUCT_PACKAGES += \
     PhaseBeam \
     VisualizationWallpapers
 
-PRODUCT_PACKAGES += \
-    libvideoeditor_jni \
-    libvideoeditor_core \
-    libvideoeditor_osal \
-    libvideoeditor_videofilters \
-    libvideoeditorplayer
+# PRODUCT_PACKAGES += \
+#    VideoEditor \
+#    libvideoeditor_jni \
+#    libvideoeditor_core \
+#    libvideoeditor_osal \
+#    libvideoeditor_videofilters \
+#    libvideoeditorplayer
 
 # Additional settings used in all AOSP builds
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -55,7 +55,7 @@ PRODUCT_LOCALES := en_US
 $(call inherit-product-if-exists, frameworks/base/data/sounds/NewAudio.mk)
 
 # Include video prebuilts
-$(call inherit-product-if-exists, frameworks/base/data/videos/VideoPackage2.mk)
+#$(call inherit-product-if-exists, frameworks/base/data/videos/VideoPackage2.mk)
 
 # Get the TTS language packs
 $(call inherit-product-if-exists, external/svox/pico/lang/all_pico_languages.mk)
