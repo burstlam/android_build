@@ -38,6 +38,7 @@ PRODUCT_PACKAGES := \
     MusicFX \
     Provision \
     Phone \
+    QuickSearchBox \
     Settings \
     SystemUI \
     CalendarProvider \
