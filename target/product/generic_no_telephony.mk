@@ -46,7 +46,9 @@ PRODUCT_PACKAGES := \
     bluetooth-health \
     hostapd \
     wpa_supplicant.conf \
-    WallpaperCropper
+    WallpaperCropper \
+    WFD \
+    Mira4U
 
 PRODUCT_PACKAGES += \
     audio \
