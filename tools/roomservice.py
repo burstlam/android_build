@@ -33,13 +33,13 @@ except:
     device = product
 
 if not depsonly:
-    print "Device %s not found. Attempting to retrieve device repository from SlimRoms Github (http://github.com/SlimRoms)." % device
+    print "Device %s not found. Attempting to retrieve device repository from LOSP Github (http://github.com/LOSP)." % device
 
 repositories = []
 
 page = 1
 while not depsonly:
-    result = json.loads(urllib2.urlopen("https://api.github.com/users/SlimRoms/repos?page=%d" % page).read())
+    result = json.loads(urllib2.urlopen("https://api.github.com/users/LOSP/repos?page=%d" % page).read())
     if len(result) == 0:
         break
     for res in result:
@@ -79,7 +79,7 @@ def indent(elem, level=0):
 
 def get_from_manifest(devicename):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/slim_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/losp_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -103,7 +103,7 @@ def get_from_manifest(devicename):
 
 def is_in_manifest(projectname, branch):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/slim_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/losp_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -116,7 +116,7 @@ def is_in_manifest(projectname, branch):
 
 def add_to_manifest_dependencies(repositories):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/slim_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/losp_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -130,7 +130,7 @@ def add_to_manifest_dependencies(repositories):
                 print 'Updating dependency %s' % (repo_name)
                 existing_project.set('name', repository['repository'])
             if existing_project.attrib['revision'] == repository['branch']:
-                print 'SlimRoms/%s already exists' % (repo_name)
+                print 'LOSP/%s already exists' % (repo_name)
             else:
                 print 'updating branch for %s to %s' % (repo_name, repository['branch'])
                 existing_project.set('revision', repository['branch'])
@@ -149,13 +149,13 @@ def add_to_manifest_dependencies(repositories):
     raw_xml = ElementTree.tostring(lm)
     raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
 
-    f = open('.repo/local_manifests/slim_manifest.xml', 'w')
+    f = open('.repo/local_manifests/losp_manifest.xml', 'w')
     f.write(raw_xml)
     f.close()
 
 def add_to_manifest(repositories):
     try:
-        lm = ElementTree.parse(".repo/local_manifests/slim_manifest.xml")
+        lm = ElementTree.parse(".repo/local_manifests/losp_manifest.xml")
         lm = lm.getroot()
     except:
         lm = ElementTree.Element("manifest")
@@ -166,15 +166,15 @@ def add_to_manifest(repositories):
         existing_project = exists_in_tree_device(lm, repo_name)
         if existing_project != None:
             if existing_project.attrib['revision'] == repository['branch']:
-                print 'SlimRoms/%s already exists' % (repo_name)
+                print 'LOSP/%s already exists' % (repo_name)
             else:
-                print 'updating branch for SlimRoms/%s to %s' % (repo_name, repository['branch'])
+                print 'updating branch for LOSP/%s to %s' % (repo_name, repository['branch'])
                 existing_project.set('revision', repository['branch'])
             continue
 
-        print 'Adding dependency: SlimRoms/%s -> %s' % (repo_name, repo_target)
+        print 'Adding dependency: LOSP/%s -> %s' % (repo_name, repo_target)
         project = ElementTree.Element("project", attrib = { "path": repo_target,
-            "remote": "github", "name": "SlimRoms/%s" % repo_name, "revision": "jb4.2" })
+            "remote": "github", "name": "LOSP/%s" % repo_name, "revision": "jb4.2" })
 
         if 'branch' in repository:
             project.set('revision', repository['branch'])
@@ -185,13 +185,13 @@ def add_to_manifest(repositories):
     raw_xml = ElementTree.tostring(lm)
     raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
 
-    f = open('.repo/local_manifests/slim_manifest.xml', 'w')
+    f = open('.repo/local_manifests/losp_manifest.xml', 'w')
     f.write(raw_xml)
     f.close()
 
 def fetch_dependencies(repo_path):
     print 'Looking for dependencies'
-    dependencies_path = repo_path + '/slim.dependencies'
+    dependencies_path = repo_path + '/losp.dependencies'
     syncable_repos = []
 
     if os.path.exists(dependencies_path):
@@ -244,4 +244,4 @@ else:
             print "Done"
             sys.exit()
 
-print "Repository for %s not found in the SlimRoms Github repository list. If this is in error, you may need to manually add it to .repo/local_manifests/slim_manifest.xml" % device
+print "Repository for %s not found in the LOSP Github repository list. If this is in error, you may need to manually add it to .repo/local_manifests/losp_manifest.xml" % device

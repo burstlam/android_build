@@ -35,7 +35,7 @@ then
     VERSION=`echo $KERNELVERSION | cut -d '-' -f2 | cut -d '"' -f1`
     KERNEL_VERSION=$VERSION-kernel
 else
-    KERNEL_VERSION=Slim-$DEVICE-kernel
+    KERNEL_VERSION=LOSP-$DEVICE-kernel
 fi
 #rm $OUT/$KERNEL_VERSION
 ZIP_DIR=$OUT/$KERNEL_VERSION
@@ -45,7 +45,7 @@ mkdir $ZIP_DIR
 UPDATER_DIR=$ZIP_DIR/META-INF/com/google/android
 mkdir -p $UPDATER_DIR
 cp $OUT/obj/EXECUTABLES/updater_intermediates/updater $UPDATER_DIR/update-binary
-echo 'ui_print("Installing Slim Kernel...");' > $UPDATER_DIR/updater-script
+echo 'ui_print("Installing LOSP Kernel...");' > $UPDATER_DIR/updater-script
 if [ "$partition_type" = "mtd" ]
 then
     echo 'package_extract_file("boot.img", "/tmp/boot.img");' >> $UPDATER_DIR/updater-script

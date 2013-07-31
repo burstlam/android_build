@@ -59,12 +59,12 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^slim_") ; then
-       SLIM_BUILD=$(echo -n $1 | sed -e 's/^slim_//g')
+    if (echo -n $1 | grep -q -e "^losp_") ; then
+       LOSP_BUILD=$(echo -n $1 | sed -e 's/^losp_//g')
     else
-       SLIM_BUILD=
+       LOSP_BUILD=
     fi
-    export SLIM_BUILD
+    export LOSP_BUILD
 
     CALLED_FROM_SETUP=true BUILD_SYSTEM=build/core \
         TARGET_PRODUCT=$1 \
@@ -498,7 +498,7 @@ function lunch()
     check_product $product
     if [ $? -ne 0 ]
     then
-        # if we can't find a product, try to grab it off the SlimRoms github
+        # if we can't find a product, try to grab it off the github
         T=$(gettop)
         pushd $T > /dev/null
         build/tools/roomservice.py $product
