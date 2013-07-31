@@ -44,7 +44,9 @@ PRODUCT_PACKAGES := \
     CalendarProvider \
     bluetooth-health \
     hostapd \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    WFD \
+    Mira4U
 
 PRODUCT_PACKAGES += \
     audio \
