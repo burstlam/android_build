@@ -5,13 +5,6 @@ ARCH_ARM_HAVE_ARMV7A            := true
 ARCH_ARM_HAVE_TLS_REGISTER      := true
 ifneq ($(strip $(TARGET_ARCH_VARIANT_FPU)),)
 ARCH_ARM_HAVE_VFP               := true
-else
-ARCH_ARM_HAVE_VFP               := false
-endif
-ifeq ($(TARGET_ARCH_VARIANT_FPU), neon)
-ARCH_ARM_HAVE_VFP_D32           := true
-ARCH_ARM_HAVE_NEON              := true
-endif
 
 mcpu-arg = $(shell sed 's/^-mcpu=//' <<< "$(call cc-option,-mcpu=$(1),-mcpu=$(2))")
 
@@ -44,9 +37,5 @@ arch_variant_cflags += \
 	-mfloat-abi=soft
 endif
 
-ifeq ($(strip $(TARGET_ARCH_VARIANT_CPU)),cortex-a8)
 arch_variant_ldflags := \
 	-Wl,--fix-cortex-a8
-else
-arch_variant_ldflags :=
-endif
