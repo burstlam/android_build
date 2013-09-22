@@ -80,6 +80,7 @@ TARGET_arm_CFLAGS :=    -Os \
                         -fno-zero-initialized-in-bss \
                         -funswitch-loops \
                         -fno-tree-vectorize \
+                        -funsafe-loop-optimizations \
                         -Wno-unused-parameter \
                         -Wno-unused-value \
                         -Wno-unused-function
