@@ -49,7 +49,6 @@ $(combo_target)HAVE_KERNEL_MODULES := 0
 $(combo_target)GLOBAL_CFLAGS := -fno-exceptions -Wno-multichar
 ifeq ($(USE_LINARO_COMPILER_FLAGS),yes)
     $(combo_target)RELEASE_CFLAGS := -O3 -g -Wstrict-aliasing=2
- else
 else
     $(combo_target)RELEASE_CFLAGS := -O2 -g -Wstrict-aliasing=2
 endif
