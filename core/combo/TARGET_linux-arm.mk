@@ -77,7 +77,6 @@ else
 TARGET_arm_CFLAGS :=    -Os \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
-                        -fno-zero-initialized-in-bss \
                         -funswitch-loops
 endif
 
