@@ -35,7 +35,7 @@ TARGET_ARCH_VARIANT := armv5te
 endif
 
 ifeq ($(strip $(TARGET_GCC_VERSION_EXP)),)
-TARGET_GCC_VERSION := 4.9
+TARGET_GCC_VERSION := 4.7
 else
 TARGET_GCC_VERSION := $(TARGET_GCC_VERSION_EXP)
 endif
@@ -75,7 +75,7 @@ endif
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
 ifeq ($(USE_LINARO_COMPILER_FLAGS),yes)
-TARGET_arm_CFLAGS := -O3 \
+TARGET_arm_CFLAGS := -O2 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing \
                         -funswitch-loops \
@@ -92,7 +92,7 @@ endif
 # Modules can choose to compile some source as thumb.
 ifeq ($(USE_LINARO_COMPILER_FLAGS),yes)
 TARGET_thumb_CFLAGS := -mthumb \
-                        -O3 \
+                        -O2 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing \
                         -funsafe-math-optimizations \
