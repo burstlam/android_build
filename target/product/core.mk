@@ -29,6 +29,7 @@ PRODUCT_PACKAGES += \
     Contacts \
     ContactsProvider \
     DefaultContainerService \
+    framework2 \
     Home \
     KeyChain \
     PicoTts \
