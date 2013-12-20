@@ -54,6 +54,10 @@ fi
 
 rm -f out/target/product/$device/obj/KERNEL_OBJ/.version
 
+echo -e "adding linaro fixes now, please be patient"
+
+sh ./linaro.sh
+
 # get time of startup
 t1=$($DATE +%s)
 
