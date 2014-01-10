@@ -10,6 +10,7 @@ usage()
         echo -e "    -c  Clean before build"
         echo -e "    -j# Set jobs"
         echo -e "    -s  Sync before build"
+        echo -e "    -L Run linaro cherry pick script"
         echo -e ""
         echo -e ${txtbld}"  Example:"${txtrst}
         echo -e "    ./builder.sh -c toro"
@@ -25,13 +26,14 @@ export USE_CCACHE=1
 opt_clean=0
 opt_jobs="$CPUS"
 opt_sync=0
+opt_linaro=0
 
 while getopts "cdij:ps" opt; do
         case "$opt" in
         c) opt_clean=1 ;;
         j) opt_jobs="$OPTARG" ;;
         s) opt_sync=1 ;;
-        p) opt_pipe=1 ;;
+        L) opt_linaro=1 ;;
         *) usage
         esac
 done
@@ -45,6 +47,13 @@ if [ "$opt_clean" -ne 0 ]; then
         make clean >/dev/null
 fi
 
+if [ "$opt_linaro" -ne 0 ]; then
+        echo -e ""
+        echo -e "adding linaro fixes now, please be patient"
+        sh ./linaro.sh
+        echo -e ""
+fi
+
 if [ "$opt_sync" -ne 0 ]; then
         echo -e ""
         echo -e ${bldblu}"Fetching latest sources"${txtrst}
@@ -53,10 +62,6 @@ if [ "$opt_sync" -ne 0 ]; then
 fi
 
 rm -f out/target/product/$device/obj/KERNEL_OBJ/.version
-
-echo -e "adding linaro fixes now, please be patient"
-
-sh ./linaro.sh
 
 # get time of startup
 t1=$($DATE +%s)
@@ -90,3 +95,7 @@ tmin=$(( (t2-t1)/60 ))
 tsec=$(( (t2-t1)%60 ))
 
 echo -e ${bldgrn}"Total time elapsed:${txtrst} ${grn}$tmin minutes $tsec seconds"${txtrst}
+
+echo -e "generating changelog- credit to MBQ_ for the script"
+
+sh ./Changelog.sh

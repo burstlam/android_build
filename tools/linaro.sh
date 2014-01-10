@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 DIR=$(pwd)
 
@@ -44,7 +44,7 @@ cd $DIR/external/v8/
 git fetch https://github.com/MWisBest/android_external_v8 && git cherry-pick 56cffae6777d3212ecb9937738e2fb49062551fa
 
 cd $DIR/frameworks/av/
-git fetch https://github.com/MWisBest/android_frameworks_av && git cherry-pick 29440eae06e9d21c3379797709ecc7069892f6bb
+git fetch https://github.com/MWisBest/android_frameworks_av && git cherry-pick cfd87ee13124bef1721dabb5c8f44b199a3539dc
 
 cd $DIR/frameworks/base/
 git fetch https://github.com/MWisBest/android_frameworks_base
