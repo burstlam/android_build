@@ -171,8 +171,8 @@ ifneq ($(DEBUG_NO_STDCXX11),yes)
 TARGET_GLOBAL_CPPFLAGS += -std=gnu++11
 endif
 ifneq ($(DEBUG_NO_LTO),yes)
-TARGET_GLOABL_CFLAGS += -flto -fno-toplevel-reorder
-TARGET_GLOBAL_CPPFLAGS += -flto -fno-toplevel-reorder
+TARGET_GLOABL_CFLAGS += -flto -fno-unit-at-a-time
+TARGET_GLOBAL_CPPFLAGS += -flto -fno-unit-at-a-time
 endif
 
 # More flags/options can be added here
