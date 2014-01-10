@@ -73,7 +73,8 @@ TARGET_arm_CFLAGS :=    -O3 \
                         -fstrict-aliasing    \
                         -funswitch-loops \
                         -funsafe-loop-optimizations \
-                        -ftree-vectorize
+                        -ftree-vectorize \
+                        -pipe
 
 # Modules can choose to compile some source as thumb.
 TARGET_thumb_CFLAGS :=  -mthumb \
@@ -82,7 +83,8 @@ TARGET_thumb_CFLAGS :=  -mthumb \
                         -fstrict-aliasing \
                         -Wstrict-aliasing=2 \
                         -Werror=strict-aliasing \
-                        -funsafe-math-optimizations
+                        -funsafe-math-optimizations \
+                        -pipe
 
 #SHUT THE F$#@ UP!
 TARGET_arm_CFLAGS +=    -Wno-unused-parameter \
@@ -131,7 +133,8 @@ TARGET_GLOBAL_CFLAGS += \
 			-fno-short-enums \
 			$(arch_variant_cflags) \
 			-include $(android_config_h) \
-			-I $(dir $(android_config_h))
+			-I $(dir $(android_config_h)) \
+                        -pipe
 
 # This warning causes dalvik not to build with gcc 4.6+ and -Werror.
 # We cannot turn it off blindly since the option is not available
@@ -176,7 +179,8 @@ TARGET_RELEASE_CFLAGS += \
 			-Werror=strict-aliasing \
 			-fgcse-after-reload \
 			-frerun-cse-after-loop \
-			-frename-registers
+			-frename-registers \
+                        -pipe
 
 libc_root := bionic/libc
 libm_root := bionic/libm
