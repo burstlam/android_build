@@ -2,12 +2,6 @@
 
 DIR=$(pwd)
 
-cd $DIR/art/
-git fetch https://github.com/MWisBest/android_art/ && git cherry-pick 3e1ece97aad900d4c61f5c0e5de4de30ff44de44
-
-cd $DIR/bionic/
-git fetch https://github.com/MWisBest/android_bionic && git cherry-pick 95bafffb35c6edd9b7282cd0f7ecf0959a993674
-
 cd $DIR/bootable/recovery/
 git fetch https://github.com/MWisBest/android_bootable_recovery
 git cherry-pick 0322527f36789816f3d573d58051f2c35576a3b8
@@ -34,9 +28,6 @@ git fetch https://github.com/MWisBest/android_external_iputils && git cherry-pic
 cd $DIR/external/llvm/
 git fetch https://github.com/MWisBest/android_external_llvm && git cherry-pick b7d10b6edc9fb6d7201f6e2e3a3f0f4ec0cbd67f
 
-# cd $DIR/external/oprofile/
-# git fetch https://github.com/IAmTheOneTheyCallNeo/android_external_oprofile tachyon-2.0 && git cherry-pick d2564470a30a2e643fb61714a5e8590a6e8cdc2b
-
 cd $DIR/external/stlport/
 git fetch https://github.com/MWisBest/android_external_stlport && git cherry-pick c4db78fd2641899226e45f368d4bb31d70cfe3d9
 
@@ -46,16 +37,8 @@ git fetch https://github.com/MWisBest/android_external_v8 && git cherry-pick 56c
 cd $DIR/frameworks/av/
 git fetch https://github.com/MWisBest/android_frameworks_av && git cherry-pick cfd87ee13124bef1721dabb5c8f44b199a3539dc
 
-cd $DIR/frameworks/base/
-git fetch https://github.com/MWisBest/android_frameworks_base
-git cherry-pick af87327881842c1bbaf5b4eb30f4372d7b0b0fa4
-git cherry-pick 6db82c5b95937648a5983486b9b810b7004b004a
-
 cd $DIR/frameworks/ex/
 git fetch https://github.com/MWisBest/android_frameworks_ex && git cherry-pick b8f6b2a4b2c432730610d1e88adf572c35d73340
-
-cd $DIR/frameworks/native/
-git fetch https://github.com/MWisBest/android_frameworks_native && git cherry-pick 2c62da77f85aa7a5c8f3401488c2d3f8b5fe0022
 
 cd $DIR/frameworks/opt/net/voip/
 git fetch https://github.com/MWisBest/android_frameworks_opt_net_voip && git cherry-pick 93ab325ebdd0f53573ecaa734e238d83c8e834d0
@@ -77,11 +60,6 @@ git fetch https://github.com/MWisBest/android_libcore && git cherry-pick eb2f7e8
 
 cd $DIR/packages/apps/Camera2/
 git fetch https://github.com/MWisBest/android_packages_apps_Camera2 && git cherry-pick c18107f922fdeb7c3e80a5d111ba2c90f83c2c14
-
-cd $DIR/system/core/
-git fetch https://github.com/MWisBest/android_system_core
-git cherry-pick 84f04b422721a6f7a0cf7fee21841f85e8bf7242
-git cherry-pick c41730e7916d7b5724148aed89d655a74725e960
 
 cd $DIR/
 
