@@ -10,7 +10,6 @@ usage()
         echo -e "    -c  Clean before build"
         echo -e "    -j# Set jobs"
         echo -e "    -s  Sync before build"
-        echo -e "    -l Run linaro cherry pick script"
         echo -e ""
         echo -e ${txtbld}"  Example:"${txtrst}
         echo -e "    ./builder.sh -c toro"
