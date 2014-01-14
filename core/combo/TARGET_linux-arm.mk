@@ -170,6 +170,10 @@ TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
 ifneq ($(DEBUG_NO_STDCXX11),yes)
 TARGET_GLOBAL_CPPFLAGS += -std=gnu++11
 endif
+ifneq ($(DEBUG_NO_LTO),yes)
+TARGET_GLOABL_CFLAGS += -flto -fno-toplevel-reorder
+TARGET_GLOBAL_CPPFLAGS += -flto -fno-toplevel-reorder
+endif
 
 # More flags/options can be added here
 TARGET_RELEASE_CFLAGS += \
@@ -196,13 +200,6 @@ ifneq ($(wildcard $(TARGET_CC)),)
 TARGET_LIBGCC := $(shell $(TARGET_CC) $(TARGET_GLOBAL_CFLAGS) -print-libgcc-file-name)
 target_libgcov := $(shell $(TARGET_CC) $(TARGET_GLOBAL_CFLAGS) \
         -print-file-name=libgcov.a)
-endif
-
-# Define LTO (Link-Time Optimization) options.
-
-TARGET_LTO_CFLAGS :=
-ifneq ($(DEBUG_NO_LTO),yes)
-TARGET_LTO_CFLAGS := -flto -fno-toplevel-reorder
 endif
 
 # Define FDO (Feedback Directed Optimization) options.
